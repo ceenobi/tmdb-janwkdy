@@ -23,6 +23,31 @@ input::placeholder {
   opacity: 0.7;
 }
 
+.scrollbody {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbody::-webkit-scrollbar {
+  display: none;
+}
+
+.sideAdjust {
+  overflow-y: auto;
+  height: 95vh;
+}
+
+.menu {
+  padding: 5px 10px;
+}
+.menu:hover {
+  background-color: #1d1c1c;
+  border-radius: 1px;
+  transition: all 0.3s;
+  color: orange;
+}
+
+
+
 @media (min-width: 1024px) {
   input {
     width: 600px !important;
@@ -32,6 +57,7 @@ input::placeholder {
     background-color: #101010;
     min-height: 100vh;
   }
+
 }
 @media (min-width: 768px) {
   input {
