@@ -2,12 +2,13 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import useFetchData from '../hooks/useFetchData'
 import { categories } from '../utils/Constants'
+import Spinner from '../utils/Spinner'
 
 export default function Sidebar() {
-  const { error, genres, loading } = useFetchData('genre/movie/list')
-  console.log(genres)
+  const { error, genres } = useFetchData('genre/movie/list')
+  if (!genres) return <Spinner />
   return (
-    <div className='d-flex flex-column gap-2 px-lg-4 mt-lg-5 py-3 py-lg-0 scrollbody sideAdjust'>
+    <div className='d-flex flex-column gap-2 px-lg-2 mt-lg-5 py-3 py-lg-0 scrollbody sideAdjust'>
       <h1 className='text-secondary fs-6 mt-2 mt-lg-5 mb-1 mb-lg-2 px-2'>
         Discover
       </h1>
@@ -26,14 +27,21 @@ export default function Sidebar() {
         </NavLink>
       ))}
 
-      <hr className='text-white'/>
-      <h1 className='text-secondary fs-6 mt-1 mt-lg-2 mb-1 px-2'>Movie Genres</h1>
+      <hr className='text-white' />
+      <h1 className='text-secondary fs-6 mt-1 mt-lg-2 mb-1 px-2'>
+        Movie Genres
+      </h1>
       {error && <p className='text-white mt-2 fs-5'>{error.message}</p>}
-      {genres.map((genre)=> (
+      {genres.map((genre) => (
         <div key={genre.id} className='mb-0'>
-            <NavLink to={`/movies/genres/${genre.id}`} className={({isActive})=> isActive ? 'text-warning' : 'text-white'}>
-                <p className='mb-0 small menu'>{genre.name}</p>
-            </NavLink>
+          <NavLink
+            to={`/movies/genres/${genre.id}`}
+            className={({ isActive }) =>
+              isActive ? 'text-warning' : 'text-white'
+            }
+          >
+            <p className='mb-0 small menu'>{genre.name}</p>
+          </NavLink>
         </div>
       ))}
       <p className='small text-white px-2'>Copyright TMDB 2023</p>

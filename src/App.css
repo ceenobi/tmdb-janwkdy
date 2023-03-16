@@ -8,12 +8,11 @@
 body {
   background-color: #202428 !important;
 }
-
 #root {
   margin: 0 auto;
 }
 input {
-  width: 70vw;
+  width: 65vw;
 }
 input:focus {
   outline: none !important;
@@ -33,7 +32,7 @@ input::placeholder {
 
 .sideAdjust {
   overflow-y: auto;
-  height: 95vh;
+  height: 100%;
 }
 
 .menu {
@@ -46,21 +45,47 @@ input::placeholder {
   color: orange;
 }
 
+.mediaCard {
+  flex: 1 0 130px;
+}
+.cast:hover {
+  opacity: 0.5;
+  transition: 0.4s ease-in;
+  background-color: #171616;
+  padding: 2px;
+  height: 100%;
+}
+.outlet {
+  width: 100%;
+}
 
+@media (min-width: 1400px) {
+  .mediaCard {
+    flex: 1 0 200px !important;
+  }
+}
 
 @media (min-width: 1024px) {
   input {
-    width: 600px !important;
+    width: 500px !important;
   }
   .sideDesktop {
     width: 250px;
     background-color: #101010;
     min-height: 100vh;
   }
-
+  .mediaCard {
+    flex: 1 0 170px;
+  }
+  .sideAdjust {
+    height: 95vh;
+  }
 }
 @media (min-width: 768px) {
   input {
     width: 400px;
+  }
+  .mediaCard:hover {
+    border: 1px solid orange;
   }
 }

@@ -14,7 +14,10 @@ export default function Navbar() {
       className='position-sticky top-0 bg-dark shadow-lg'
       style={{ zIndex: 10 }}
     >
-      <Stack direction='horizontal' className='p-2 justify-content-between'>
+      <Stack
+        direction='horizontal'
+        className='py-2 px-1 px-md-2 justify-content-between'
+      >
         <Stack direction='horizontal' gap={2} style={{ cursor: 'pointer' }}>
           {showMenu ? (
             <AiOutlineClose
@@ -35,7 +38,7 @@ export default function Navbar() {
         </Stack>
         <Searchbar />
       </Stack>
-      {showMenu && <Sidebar/>}
+      {showMenu && <Sidebar />}
     </Container>
   )
 }
