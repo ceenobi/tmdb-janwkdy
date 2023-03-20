@@ -6,11 +6,9 @@
   font-family: 'Noto Sans Mro', sans-serif;
 }
 body {
-  background-color: #202428 !important;
+  background-color: #0f1113 !important;
 }
-#root {
-  margin: 0 auto;
-}
+
 input {
   width: 65vw;
 }
@@ -21,7 +19,6 @@ input::placeholder {
   color: #fff !important;
   opacity: 0.7;
 }
-
 .scrollbody {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -29,24 +26,12 @@ input::placeholder {
 .scrollbody::-webkit-scrollbar {
   display: none;
 }
-
 .sideAdjust {
-  overflow-y: auto;
+  overflow-y: scroll;
   height: 100%;
 }
-
-.menu {
-  padding: 5px 10px;
-}
-.menu:hover {
-  background-color: #1d1c1c;
-  border-radius: 1px;
-  transition: all 0.3s;
-  color: orange;
-}
-
 .mediaCard {
-  flex: 1 0 130px;
+  flex: 0 1 130px;
 }
 .cast:hover {
   opacity: 0.5;
@@ -55,35 +40,33 @@ input::placeholder {
   padding: 2px;
   height: 100%;
 }
-.outlet {
-  width: 100%;
-}
-
-@media (min-width: 1400px) {
-  .mediaCard {
-    flex: 1 0 200px !important;
-  }
+.menu {
+  padding: 5px 10px;
 }
 
 @media (min-width: 1024px) {
   input {
     width: 500px !important;
   }
-  .sideDesktop {
-    width: 250px;
-    background-color: #101010;
-    min-height: 100vh;
+  .menu:hover {
+    background-color: #1d1c1c;
+    border-radius: 1px;
+    transition: all 0.3s;
+    color: orange;
   }
   .mediaCard {
-    flex: 1 0 170px;
+    flex: 0 1 170px;
   }
-  .sideAdjust {
-    height: 95vh;
+  .outlet {
+    width: calc(100% - 250px);
   }
 }
 @media (min-width: 768px) {
   input {
     width: 400px;
+  }
+  .mediaCard {
+    flex: 0 1 160px;
   }
   .mediaCard:hover {
     border: 1px solid orange;

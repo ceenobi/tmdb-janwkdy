@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { API_KEY, BASE_URL } from '../api/config'
 import axios from 'axios'
 
-export default function useFetchData(url) {
+export default function useFetchData(url, tt, gt) {
   const [data, setData] = useState([])
   const [genres, setGenres] = useState([])
   const [loading, setLoading] = useState(false)
@@ -26,7 +26,7 @@ export default function useFetchData(url) {
       }
     }
     fetchData()
-  }, [url])
+  }, [url, tt, gt])
 
-  return {data, error, loading,genres}
+  return { data, error, loading, genres }
 }

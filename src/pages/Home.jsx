@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react'
-import { MediaCard, PageLayout } from '../components'
+import React, { lazy, useEffect } from 'react'
+import { Col, Row } from 'react-bootstrap'
+import { PageLayout } from '../components'
 import useFetchData from '../hooks/useFetchData'
+import Spinner from '../utils/Spinner'
+
+const MediaCard = lazy(()=> import('../components/MediaCard'))
 
 export default function Home() {
   const { error, data } = useFetchData('trending/movie/week')
@@ -10,11 +14,15 @@ export default function Home() {
   }, [])
   return (
     <PageLayout heading='Trending Movies' error={error}>
-      <div className='d-flex flex-wrap gap-3'>
-        {data.map((movie) => (
-          <MediaCard {...movie} key={movie.id} />
-        ))}
-      </div>
+      <React.Suspense fallback={<Spinner />}>
+        <Row className='gy-2'>
+          {data.map((movie) => (
+            <Col xs={6} md={3} xl={2} key={movie.id}>
+              <MediaCard {...movie}/>
+            </Col>
+          ))}
+        </Row>
+      </React.Suspense>
     </PageLayout>
   )
 }

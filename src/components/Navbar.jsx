@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <Container
       fluid
-      className='position-sticky top-0 bg-dark shadow-lg'
+      className='position-fixed top-0 bg-dark shadow-lg'
       style={{ zIndex: 10 }}
     >
       <Stack
