@@ -27,7 +27,7 @@ export default function MediaCard({
             <p className='text-white small fw-bold mb-0'>{title}</p>
           </Link>
           <div className='d-flex justify-content-between align-items-center'>
-            <p className='text-secondary small'>{release_date.slice(0, 4)}</p>
+            <p className='text-secondary small'>{release_date?.slice(0, 4)}</p>
             <div className='d-flex gap-1'>
               <BsStarFill className='text-warning' size='1rem' />
               <p className='small text-secondary'>{vote_average.toFixed(2)}</p>

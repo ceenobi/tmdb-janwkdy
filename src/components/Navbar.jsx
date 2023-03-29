@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { Container, Stack } from 'react-bootstrap'
 import { SiThemoviedatabase } from 'react-icons/si'
 import { FiMenu } from 'react-icons/fi'
-import { AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-import { Searchbar, Sidebar } from './'
+import { Searchbar, Drawer } from './'
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
@@ -19,26 +18,19 @@ export default function Navbar() {
         className='py-2 px-1 px-md-2 justify-content-between'
       >
         <Stack direction='horizontal' gap={2} style={{ cursor: 'pointer' }}>
-          {showMenu ? (
-            <AiOutlineClose
-              className='d-lg-none text-white'
-              size='1.5rem'
-              onClick={() => setShowMenu(!showMenu)}
-            />
-          ) : (
-            <FiMenu
-              className='d-lg-none text-white'
-              size='1.5rem'
-              onClick={() => setShowMenu(!showMenu)}
-            />
-          )}
+          <FiMenu
+            className='d-lg-none text-white'
+            size='1.5rem'
+            onClick={() => setShowMenu(true)}
+          />
+
           <Link to='/'>
             <SiThemoviedatabase size='2.5rem' color='orange' />
           </Link>
         </Stack>
         <Searchbar />
       </Stack>
-      {showMenu && <Sidebar />}
+      {showMenu && <Drawer setShowMenu={setShowMenu}/>}
     </Container>
   )
 }
