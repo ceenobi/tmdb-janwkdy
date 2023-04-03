@@ -13,7 +13,7 @@ export default function Drawer({setShowMenu}) {
           style={{ cursor: 'pointer' }}
           onClick={()=> setShowMenu(false)}
         />
-        <Sidebar />
+        <Sidebar setShowMenu={setShowMenu}/>
       </div>
     </div>
   )

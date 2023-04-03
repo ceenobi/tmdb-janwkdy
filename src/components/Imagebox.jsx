@@ -11,13 +11,20 @@ export default function Imagebox({
   index,
   setIndex,
   setShowPicModal,
+  profiles,
 }) {
-  const backDrops = backdrops.slice(0, 25).map((u) => u.file_path)
+  const backDrops = backdrops?.slice(0, 25).map((u) => u.file_path)
+  const imgSlides = profiles?.map((u) => u.file_path)
+
   const prevSlide = () => {
-    setIndex(index === 1 ? backdrops.length : (prev) => prev - 1)
+    backdrops
+      ? setIndex(index === 1 ? backdrops.length : (prev) => prev - 1)
+      : setIndex(index === 1 ? profiles.length : (prev) => prev - 1)
   }
   const nextSlide = () => {
-    setIndex(index === backdrops.length ? 1 : (prev) => prev + 1)
+    backdrops
+      ? setIndex(index === backdrops.length ? 1 : (prev) => prev + 1)
+      : setIndex(index === profiles.length ? 1 : (prev) => prev + 1)
   }
   return (
     <div className='modalbox'>
@@ -45,9 +52,19 @@ export default function Imagebox({
             />
           </div>
           <div className='text-center'>
-            <Image
-              src={`https://image.tmdb.org/t/p/w500/${backDrops[index]}`}
-            />
+            {imgSlides && (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${imgSlides[index]}`}
+                className='personImg rounded-3'
+              />
+            )}
+
+            {backdrops && (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${backDrops[index]}`}
+                className='personImg rounded-3'
+              />
+            )}
           </div>
         </div>
       </div>

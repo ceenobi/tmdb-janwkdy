@@ -9,7 +9,7 @@ export default function Layout() {
         <div
           className='d-none d-lg-block'
           style={{
-            width: '250px',
+            width: '200px',
             minHeight: '100vh',
             backgroundColor: '#1a1b1d',
           }}

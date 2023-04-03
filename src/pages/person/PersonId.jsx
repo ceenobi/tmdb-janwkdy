@@ -47,8 +47,6 @@ export default function PersonId() {
     document.title = dataId?.name
   }, [dataId?.name])
 
-  console.log('personid', dataId)
-
   if (!dataId) return <Spinner />
 
   const {
@@ -102,6 +100,60 @@ export default function PersonId() {
             </div>
           </div>
         </div>
+      </div>
+      <div className='mt-4'>
+        <h1 className='text-white fs-5 mt-3 mb-3'>Images</h1>
+        <div style={{ position: 'relative' }}>
+          <div
+            className='d-flex scrollbody'
+            style={{
+              overflowX: 'scroll',
+              overflowY: 'hidden',
+              width: '100%',
+            }}
+            ref={scrollRef}
+          >
+            {profiles.map((im, index) => (
+              <div key={index} className='me-3'>
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500/${im.file_path}`}
+                  className='rounded-3'
+                  loading='lazy'
+                  style={{ width: '180px', height: '200px' }}
+                  onClick={() => {
+                    setShowPicModal(true)
+                    setIndex(index)
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+          {profiles.length > 8 && <ScrollButtons scroll={scroll} />}
+          {showPicModal && (
+            <Imagebox
+              setShowPicModal={setShowPicModal}
+              index={index}
+              setIndex={setIndex}
+              profiles={profiles}
+            />
+          )}
+        </div>
+      </div>
+      <div className='mt-4'>
+        <h1 className='text-white fs-5 mt-3 mb-3'>Cast</h1>
+        {cast.length > 0 ? (
+          <Row className='gy-2'>
+            {cast.map((movie) => (
+              <Col xs={6} md={3} xl={2} key={movie.id}>
+                <MediaCard {...movie} />
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <h1 className='text-secondary fs-6 mt-3 mb-3'>
+            No movie credits for {name} at the moment
+          </h1>
+        )}
       </div>
     </PageLayoutId>
   )

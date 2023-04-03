@@ -4,7 +4,7 @@ import useFetchData from '../hooks/useFetchData'
 import { categories } from '../utils/Constants'
 import Spinner from '../utils/Spinner'
 
-export default function Sidebar() {
+export default function Sidebar({setShowMenu}) {
   const { error, genres } = useFetchData('genre/movie/list')
   if (!genres) return <Spinner />
   return (
@@ -17,6 +17,7 @@ export default function Sidebar() {
           className={({ isActive }) =>
             isActive ? 'text-warning' : 'text-white'
           }
+          onClick={() => setShowMenu(false)}
         >
           <div className='d-flex gap-2 align-items-center py-1 menu'>
             <div style={{ fontSize: '1.3rem' }}>{category.icon}</div>
@@ -25,7 +26,7 @@ export default function Sidebar() {
         </NavLink>
       ))}
 
-      <hr className='text-white'/>
+      <hr className='text-white' />
       <h1 className='text-secondary fs-6 mt-1 mt-lg-2 mb-1 px-2'>
         Movie Genres
       </h1>
@@ -37,6 +38,7 @@ export default function Sidebar() {
             className={({ isActive }) =>
               isActive ? 'text-warning' : 'text-white'
             }
+            onClick={() => setShowMenu(false)}
           >
             <p className='mb-0 small menu'>{genre.name}</p>
           </NavLink>

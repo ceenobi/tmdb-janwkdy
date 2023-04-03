@@ -12,7 +12,6 @@ import {
   Videobox,
 } from '../../components'
 import { AiFillStar } from 'react-icons/ai'
-
 import useScroll from '../../hooks/useScroll'
 
 export default function MovieId() {
@@ -39,6 +38,7 @@ export default function MovieId() {
     }
     fetchData()
   }, [movie_id])
+  // scrollToTop()
 
   useEffect(() => {
     if (showModal || showPicModal) {
