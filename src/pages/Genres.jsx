@@ -21,7 +21,7 @@ export default function Genres() {
     setTimeout(() => {
       setPage((prev) => prev + 1)
       setIsFetching(false)
-    }, 5000)
+    }, 3000)
   }
 
   useEffect(() => {

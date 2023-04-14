@@ -8,10 +8,12 @@ import { API_KEY, BASE_URL } from '../api/config'
 export default function SearchResult({ searchQuery, setResultBox }) {
   const [data, setData] = useState([])
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       const fetchData = async () => {
+        setLoading(true)
         try {
           const response = await axios.get(
             `${BASE_URL}/search/multi?api_key=${API_KEY}&query=${searchQuery}`
@@ -21,6 +23,7 @@ export default function SearchResult({ searchQuery, setResultBox }) {
           console.log(error)
           setError(error)
         }
+        setLoading(false)
       }
       fetchData()
     }, 1000)
@@ -39,14 +42,13 @@ export default function SearchResult({ searchQuery, setResultBox }) {
     }
   })
 
-  console.log('fil', filteredResults)
-
   return (
     <div
       className='position-absolute top-25 mt-2 text-white py-2 bg-dark searchResult scrollbody'
       style={{ height: '350px', overflowY: 'scroll' }}
     >
       {error && <p className='mt-4 fs-5'>{error.message}</p>}
+      {loading && <Spinner />}
       {filteredResults.length > 0 ? (
         <>
           {filteredResults.map((result) => (

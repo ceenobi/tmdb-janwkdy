@@ -18,14 +18,21 @@ export default function Imagebox({
 
   const prevSlide = () => {
     backdrops
-      ? setIndex(index === 1 ? backdrops.length : (prev) => prev - 1)
+      ? setIndex(index === 0 ? backdrops.length - 1 : (prev) => prev - 1)
       : setIndex(index === 1 ? profiles.length : (prev) => prev - 1)
   }
   const nextSlide = () => {
     backdrops
-      ? setIndex(index === backdrops.length ? 1 : (prev) => prev + 1)
+      ? setIndex(index === backdrops.length - 1 ? 0 : (prev) => prev + 1)
       : setIndex(index === profiles.length ? 1 : (prev) => prev + 1)
   }
+  // if (!Array.isArray(backDrops) || backDrops.length <= 0) {
+  //   return null
+  // }
+  // if (!Array.isArray(imgSlides) || imgSlides.length <= 0) {
+  //   return null
+  // }
+
   return (
     <div className='modalbox'>
       <div className='backdrop' />

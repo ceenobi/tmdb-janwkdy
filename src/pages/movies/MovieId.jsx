@@ -20,7 +20,7 @@ export default function MovieId() {
   const [error, setError] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [showPicModal, setShowPicModal] = useState(false)
-  const [index, setIndex] = useState(1)
+  const [index, setIndex] = useState(0)
   const { scrollRef, scroll, scrollB, scrollRefB, scrollRefC, scrollC } =
     useScroll()
 
@@ -38,7 +38,6 @@ export default function MovieId() {
     }
     fetchData()
   }, [movie_id])
-  // scrollToTop()
 
   useEffect(() => {
     if (showModal || showPicModal) {
@@ -107,7 +106,7 @@ export default function MovieId() {
             ))}
             <h1 className='fs-5 text-secondary'>Screenplay</h1>
             <p>
-              {crew[0].job} - {crew[0].name}
+              {crew[0]?.job} - {crew[0]?.name}
             </p>
             <h1 className='fs-5'>Genres</h1>
             <div className='d-flex flex-wrap gap-2'>
@@ -210,7 +209,7 @@ export default function MovieId() {
                 </div>
               ))}
             </div>
-            {backdrops.length > 8 && <ScrollButtons scroll={scrollB} />}
+            {backdrops.length > 12 && <ScrollButtons scroll={scrollB} />}
             {showPicModal && (
               <Imagebox
                 setShowPicModal={setShowPicModal}

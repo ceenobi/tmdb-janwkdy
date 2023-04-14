@@ -22,5 +22,5 @@ export default function useScroll() {
       ? (current.scrollLeft -= 500)
       : (current.scrollLeft += 500)
   }
-  return { scrollRef, scroll,scrollRefB, scrollB, scrollC, scrollRefC }
+  return { scrollRef, scroll, scrollRefB, scrollB, scrollC, scrollRefC }
 }

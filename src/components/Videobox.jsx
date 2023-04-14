@@ -10,11 +10,15 @@ export default function Videobox({ setShowModal, results, index, setIndex }) {
   const resultSlides = results.map((u) => u.key)
 
   const prevSlide = () => {
-    setIndex(index === 1 ? results.length : (prev) => prev - 1)
+    setIndex(index === 0 ? results.length - 1 : (prev) => prev - 1)
   }
   const nextSlide = () => {
-    setIndex(index === results.length ? 1 : (prev) => prev + 1)
+    setIndex(index === results.length  - 1 ? 0  : (prev) => prev + 1)
   }
+
+   if (!Array.isArray(results) || results.length <= 0) {
+     return null
+   }
 
   return (
     <div className='modalbox'>

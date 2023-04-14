@@ -7,7 +7,6 @@ import SearchResult from './SearchResult'
 export default function Searchbar() {
   const [searchQuery, setSearchQuery] = useState('')
   const [resultBox, setResultBox] = useState(false)
-  console.log(searchQuery)
 
   useEffect(() => {
     if (searchQuery !== '') {
